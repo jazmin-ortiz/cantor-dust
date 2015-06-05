@@ -1,11 +1,8 @@
-// Author: Jazmin Ortiz
-//
-// Last Modified: 05/31/15
 
 #ifndef CANTORSET_HPP_INCLUDED
 #define CANTORSET_HPP_INCLUDED 1
 
-#include <cstddef>
+#include <vector>
 
 /**
  * class: CantorSet
@@ -16,17 +13,24 @@ class CantorSet {
 
 public:
 
-  // Returns the total number of steps that are currently contained.
-  size_t total_generations();
-
+  // Default constructor for CantorSet
+  CantorSet() = default;
   
-
-
-
-
-
-
-
+  // Default destructor for CantorSet
+  ~CantorSet() = default;
+  
+  // Struct to contain the two doubles which define an interval, that is
+  // included in a given iteration.
+  struct Interval {
+    double begin;
+    double end;
+  };
+    
+  // Takes in the intervals for a given set and returns the intervals for the
+  // the next step
+  std::vector<Interval> next_step(std::vector<Interval> current_s);
+  
+  std::vector<std::vector<Interval> > iterations_;
 };
 
 
